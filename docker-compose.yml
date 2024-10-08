@@ -1,0 +1,24 @@
+services:
+  maria_db:
+    image: mysql:8.0
+    container_name: maria_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: sales_db
+      MYSQL_USER: Hero
+      MYSQL_PASSWORD: M!ss3d
+      MYSQL_ROOT_PASSWORD: M!ss3d
+      DB_HOST: maria_db
+    ports:
+      - "3306:3306"
+
+  django_app:
+    build: .
+    container_name: django_app
+    command: python ./app/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - maria_db

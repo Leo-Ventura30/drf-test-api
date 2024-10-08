@@ -1,0 +1,8 @@
+**/.vscode/**
+**/__pycache__/**
+**/media/**
+**/node_modules/**
+
+*__pycache__*
+
+.env
